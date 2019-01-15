@@ -3,7 +3,10 @@ import json
 import requests
 import termcolor
 
-from urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
 
 from core.curlcommand import CurlCommand
 from core.httpoperation import HttpOperation
