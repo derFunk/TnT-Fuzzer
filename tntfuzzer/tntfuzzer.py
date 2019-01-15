@@ -101,6 +101,9 @@ class TntFuzzer:
                 path = paths[path_key]
 
                 for op_code in path.keys():
+                    if path_key.startswith('/') and host_basepath.endswith('/'):
+                        path_key = path_key[1:]
+
                     operation = HttpOperation(op_code, protocol + '://' + host_basepath, path_key,
                                               replicator=replicator, op_infos=path[op_code], use_fuzzing=True,
                                               headers=self.headers)
